@@ -128,18 +128,20 @@ export default function Form() {
 
     return (
         <div className="flex flex-col justify-center items-center">
-            <img src="/topicon.png" className="w-24 bounce-up" />
+            <img src="/topicon.png" className="w-32 bounce-up" />
 
-            <div className="min-h-screen w-full bg-gradient-to-b from-yellow-50 to-orange-50 flex justify-center py-12 px-4">
+            <div className="min-h-screen w-full flex justify-center py-8 px-4">
                 <form
                     onSubmit={handleSubmit}
-                    className="bg-white w-full max-w-3xl rounded-3xl shadow-xl p-6 md:p-8"
+                    className="bg-white w-full max-w-3xl rounded-[32px] shadow-xl p-6"
                 >
 
 
                     <section className="mb-8">
                         <h3 style={{ fontFamily: "Fredoka One" }} className=" flex items-center text-[#e05f00]   text-2xl mb-4">
-                            <span className="text-orange-400 mr-2 text-2xl">♡</span> About you
+                            <span className="mr-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart h-6 w-6"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+                            </span> About you
                         </h3>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -202,7 +204,7 @@ export default function Form() {
                         </h3>
 
                         {destinations.map((dest, index) => (
-                            <div key={index} className="relative mb-8 p-5 border border-orange-100 rounded-2xl bg-white">
+                            <div key={index} className="relative mb-8 p-5 border bg-orange-50 border-orange-100 rounded-2xl ">
                                 {index > 0 && (
                                     <button
                                         type="button"
@@ -213,7 +215,7 @@ export default function Form() {
                                     </button>
                                 )}
 
-                                <div style={{ fontFamily: "Fredoka One" }} className="text-[#e05f00]  mb-3 text-center block">
+                                <div style={{ fontFamily: "Fredoka One" }} className="text-[#e05f00]  mb-3 text-xl text-center block">
                                     Destination {index + 1}
                                 </div>
 
@@ -261,7 +263,9 @@ export default function Form() {
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                                     <div>
-                                        <label className="text-[#e05f00]  text-sm font-semibold">Start date *</label>
+                                        <label className="text-[#e05f00] text-sm font-semibold flex gap-2 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-4 w-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                                            Start date *</label>
                                         <input
                                             type="date"
                                             value={dest.startDate}
@@ -274,7 +278,9 @@ export default function Form() {
                                     </div>
 
                                     <div>
-                                        <label className="text-[#e05f00]  text-sm font-semibold">End date *</label>
+                                        <label className="text-[#e05f00]  text-sm font-semibold flex gap-2 items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar h-4 w-4"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>
+                                            End date *</label>
                                         <input
                                             type="date"
                                             value={dest.endDate}
@@ -301,9 +307,9 @@ export default function Form() {
                                                     key={exp.label}
                                                     type="button"
                                                     onClick={() => toggleExperience(index, exp.label)}
-                                                    className={`flex items-center justify-center gap-2 px-4 py-2 rounded-2xl border text-sm ${active
+                                                    className={`flex items-center justify-start gap-2 px-4 py-2 rounded-2xl border-2 text-sm ${active
                                                         ? "bg-orange-500 text-white border-orange-500"
-                                                        : "bg-white text-orange-700 border-orange-300 hover:bg-orange-100"
+                                                        : "bg-white text-[#1A1A2E] border-orange-300 hover:bg-orange-100"
                                                         }`}
                                                 >
                                                     {exp.label} {exp.icon}
@@ -320,7 +326,7 @@ export default function Form() {
                                 </div>
 
                                 <div>
-                                    <label className="text-[#e05f00]  text-sm font-semibold text-center block">
+                                    <label className="text-[#e05f00] text-sm font-semibold text-center block">
                                         Your wishlist & must-do
                                     </label>
                                     <textarea
@@ -328,7 +334,7 @@ export default function Form() {
                                         onChange={(e) =>
                                             updateDestination(index, "wishlist", e.target.value)
                                         }
-                                        placeholder="e.g. Try ramen, temples, beaches..."
+                                        placeholder="e.g., Try authentic ramen, visit temples, experience nightlife, find best Instagram spots..."
                                         rows={3}
                                         className={`${inputBase} rounded-2xl resize-none`}
                                     ></textarea>
